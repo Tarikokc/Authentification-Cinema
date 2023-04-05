@@ -5,7 +5,7 @@ session_start();
 $hostname = 'localhost'; // nom ou IP du serveur
 $username = 'root';                // nom de l'utilisateur
 $password = '';               // mot de passe de l'utilisateur
-$bdd = 'authentification';     // nom de la base de données
+$bdd = 'cinema';     // nom de la base de données
 
 $connexion = new mysqli($hostname, $username, $password);
 
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])){
 
 }
 // requete
-$newPDO = new PDO('mysql:host=127.0.0.1;dbname=authentification', 'root', '');
+$newPDO = new PDO('mysql:host=127.0.0.1;dbname=cinema', 'root', '');
 $req = $newPDO->prepare('SELECT email, motdepasse FROM users WHERE email =:emailParam AND motdepasse = :mdpParam');
 $req->bindParam("emailParam",$nomUtilisateur);
 $req->bindParam("mdpParam",$motdePasse);
@@ -36,7 +36,7 @@ $motdePasse = mysqli_real_escape_string($connexion, htmlspecialchars($_POST['mot
 while ($don = $req->fetch()) {
     if ($nomUtilisateur == $don['email'] and $motdePasse == $don['motdepasse']){
         $_SESSION['user'] = $nomUtilisateur;
-        header('Location: bsup.php');
+        header("Location: ../php/film.php");
     }else{
         die("Erreur, mot de passe ou email incorrect");
     }

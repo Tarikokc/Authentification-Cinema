@@ -113,8 +113,7 @@ if (isset($_POST['submit'])) {
         $films = $film->fetchAll();
     }
 
-    echo '<a class = "position-absolute top-400 start-0 translate-middle
-    "href="http://localhost/php_roos/Tp%20film/index.php" target="_blank">Retour à la page de sélection</a>';
+    echo '<a class = "btn btn-primary position-relative"href="http://localhost/Tp film/php/film.php" target="_blank">Retour à la page de sélection</a>';
 
 }
 
